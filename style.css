@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --color-primary-black: #1D1D1D;
+    --color-primary-grey: #EAEAE8;
+    --color-primary-white: #FFFFFF;
+    --color-bestseller: #D9D6B0;
+    --color-limited: #D4B0D9;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: unset;
+    text-decoration: unset;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    padding: 0 16px;
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        padding: 0 42px;
+    }
+}
+
+
+/* NavBar  */
+
+#nav {
+    margin-bottom: 62px;
+}
+
+.nav-container {
+    display: flex;
+    width: 100%;
+    height: 72px;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-container .logo-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-container .logo-container .icon {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--color-primary-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.nav-container .logo-container .icon:hover {
+    background-color: var(--color-primary-black);
+}
+
+.nav-container .logo-container .icon span {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-primary-black);
+}
+
+.nav-container .logo-container .icon:hover span {
+    color: #FFFFFF;
+}
+
+
+
+.nav-container .icon-text span {
+    font-size: 1rem;
+    font-weight: 500;
+    text-wrap: nowrap;
+}
+
+.nav-container .hamburger-container button {
+    background: transparent;
+    border: none;
+    display: block;
+    cursor: pointer;
+    margin-top: 5px;
+    z-index: 9;
+    transition: margin 0.3s ease;
+}
+
+
+.nav-container .hamburger-container button span {
+    display: block;
+    width: 23px;
+    height: 3px;
+    margin-bottom: 5px;
+    position: relative;
+    background: var(--color-primary-black);
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0;
+    transition: transform 0.5s cubic-bezier(.77, .2, .05, 1), background 0.5s cubic-bezier(.77, .2, .05, 1), opacity 0.55s ease;
+}
+
+.nav-container .hamburger-container.active span {
+    opacity: 1;
+    transform: rotate(45deg) translate(3px, -1px);
+}
+
+.nav-container .hamburger-container span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+
+.nav-container .hamburger-container.active>span:nth-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(.2, .2);
+}
+
+.nav-container .hamburger-container.active>span:nth-child(3) {
+    opacity: 1;
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+.nav-container .brand-name {
+    margin-left: 32px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 140%;
+}
+
+.nav-container .frontend-container {
+    display: none;
+    gap: 12px;
+}
+
+.nav-container .navbar-colapse {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 85%;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    gap: 80px;
+    transition: 1s ease-in-out;
+    right: -100%;
+    padding-left: 32px;
+}
+
+.nav-container .navbar-colapse .logo-container {
+    justify-content: space-between;
+    align-items: start;
+    padding: 24px 0;
+}
+
+.nav-container .company-logo {
+    display: none;
+}
+
+.nav-container .navbar-colapse .btn {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-container .navbar-colapse .btn button {
+    background-color: inherit;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-container .navbar-colapse .btn span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.nav-container .navbar-colapse .main-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: var(--color-primary-black);
+}
+
+.nav-container .navbar-colapse .main-nav li:hover {
+    text-decoration: underline;
+}
+
+.nav-container.active .navbar-colapse {
+    right: 0;
+
+}
+
+
+
+@media screen and (min-width: 1280px) {
+    .nav-container .navbar-colapse {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        background-color: inherit;
+        position: static;
+        gap: none;
+        transition: none;
+        padding: 0;
+    }
+
+    .navbar-colapse .logo-container {
+        display: none;
+    }
+
+    .nav-container .hamburger-container {
+        display: none;
+    }
+
+    .nav-container .navbar-colapse .main-nav {
+        flex-direction: row;
+        gap: 42px;
+    }
+
+    .nav-container .company-logo {
+        display: flex;
+    }
+
+    .nav-container .frontend-container {
+        display: flex;
+    }
+
+
+}
+
+/* title section */
+
+#title{
+    margin-bottom: 36px;
+}
+
+.title-section .title-container {
+    margin-bottom: 24px;
+}
+
+.title-section .title-container h1 {
+    font-size: 55px;
+    color: var(--color-primary-black);
+}
+
+.title-section .img-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.title-section .img-container.sm-img {
+    max-height: 530px;
+}
+
+.title-section .img-container.sm-img img {
+    object-fit: contain;
+}
+
+
+
+.title-section .bg-img {
+    display: none;
+}
+
+@media screen and (min-width: 850px) {
+    .title-section .bg-img {
+        display: flex;
+        justify-content: center;
+        max-height: 732px;
+        width: 100%;
+    }
+
+    .title-section .bg-img img {
+        object-fit: contain;
+
+    }
+
+    .title-section .sm-img {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .title-section .title-container h1 {
+        font-size: 120px;
+    }
+}
