@@ -98,9 +98,6 @@ async function loadItems() {
     items.data.forEach((item, index) => {
       const div = document.createElement("div");
       div.classList.add("item-container");
-      console.log(pageNumber);
-      // tylko raz przy pierwszym ładowaniu
-
       div.style.order = currentItemCount + index + 1;
 
       const img = document.createElement("img");
@@ -158,5 +155,4 @@ window.addEventListener("scroll", () => {
     }
   }, 150);
 });
-
 loadItems();

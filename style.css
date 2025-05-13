@@ -475,6 +475,10 @@ li {
     padding: 0 12px;
 }
 
+.swiper-wrapper .information-container .title-container{
+    margin-bottom: 0px;
+}
+
 
 .swiper-button {
     width: 72px !important;
@@ -583,6 +587,7 @@ li {
 }
 
 .items-display-section .items-container .popup {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -593,6 +598,7 @@ li {
 }
 
 .items-display-section .items-container .popup.active {
+    display: flex;
     z-index: 100;
 
 }
@@ -655,7 +661,6 @@ li {
     flex-direction: column;
     position: relative;
     cursor: pointer;
-
 }
 
 .items-display-section .item-container img {
@@ -724,7 +729,6 @@ li {
         flex-direction: row;
         gap: 24px;
     }
-
 
     .items-display-section .items-container .item-container {
         width: 441px;
