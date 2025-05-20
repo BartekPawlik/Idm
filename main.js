@@ -3,6 +3,7 @@ const navContainer = document.querySelector(".nav-container");
 const overlay = document.querySelector("#overlay");
 const navigation = document.querySelectorAll(".navigation");
 const popup = document.querySelector(".popup");
+const banner = document.querySelector(".banner");
 
 menuBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -65,6 +66,7 @@ for (let i = 1; i <= 36; i++) {
   const option = document.createElement("option");
   option.value = i;
   option.textContent = i;
+
   if (i === 14) option.selected = true;
   select.appendChild(option);
 }
@@ -78,14 +80,24 @@ let isLoading = false;
 select.addEventListener("change", () => {
   pageSize = parseInt(select.value);
   pageNumber = 1;
-  itemContainer.innerHTML = "";
+
+  const value = parseInt(select.value);
+
+  if (value === 2 || value === 5) {
+    banner.style.order = 2;
+  }else{
+    banner.style.order = "";
+
+  }
+  itemContainer
+    .querySelectorAll(".item-container")
+    .forEach((el) => el.remove());
   loadItems();
 });
 
 async function loadItems() {
   if (isLoading) return;
   isLoading = true;
-
 
   try {
     const res = await fetch(
@@ -94,11 +106,12 @@ async function loadItems() {
     const items = await res.json();
 
     const currentItemCount = itemContainer.children.length;
+    console.log(currentItemCount)
 
     items.data.forEach((item, index) => {
       const div = document.createElement("div");
       div.classList.add("item-container");
-      div.style.order = currentItemCount + index + 1;
+      div.style.order = currentItemCount + index - 1;
 
       const img = document.createElement("img");
       img.src = item.image;
@@ -138,7 +151,6 @@ async function loadItems() {
     console.error("problem load", err);
   } finally {
     isLoading = false;
-
   }
 }
 
@@ -148,7 +160,8 @@ window.addEventListener("scroll", () => {
 
   scrollTimeout = setTimeout(() => {
     const nearBottom =
-      Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
+      Math.ceil(window.innerHeight + window.scrollY) >=
+      document.documentElement.scrollHeight;
 
     if (nearBottom) {
       loadItems();
